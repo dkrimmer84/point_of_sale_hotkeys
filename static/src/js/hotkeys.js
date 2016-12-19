@@ -2,7 +2,7 @@ odoo.define('hotkeys', function (require) {
 	"use strict";
 
 	// Se importan los modulos necesarios
-	var core = require('web.core');
+	/*var core = require('web.core');
 	var models = require('point_of_sale.models');
 	var session = require('web.session');
 	var PosDB = require('point_of_sale.DB');
@@ -12,9 +12,21 @@ odoo.define('hotkeys', function (require) {
 	var Model = require('web.Model');
 	var data = require('web.data');
 	var PosBaseWidget = require('point_of_sale.BaseWidget');
-	var Screens = require('point_of_sale.screens');
+	var Screens = require('point_of_sale.screens');*/
 
 	
-	console.log('testtttttt');
+	console.log('testtttttt2');
 
+	$(document).ready(function(){
+
+		console.log('Entra');
+		$(document).bind('keydown', 'f2', function(){
+			console.log('Entraaa');
+		});
+	});
+
+	
+
+
+   
  });
