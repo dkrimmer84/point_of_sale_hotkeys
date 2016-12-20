@@ -28,14 +28,28 @@ odoo.define('hotkeys', function (require) {
 	    	$(document).ready(function(){
 				self.ready.done(function(){
 
-					$(document).bind('keydown', 'c', function(){
-						$('.mode-button[data-mode="quantity"]').click();
-					});
+					self.addEvents();
 
+					
 
 
 				});
 			})
+	    },
+	    addEvents : function(){
+	    	var self = this;
+
+	    	$(document).bind('keydown', 'c', function(){
+				$('.mode-button[data-mode="quantity"]').click();
+			});
+
+			$(document).bind('keydown', 'd', function(){
+				$('.mode-button[data-mode="discount"]').click();
+			});
+
+			$(document).bind('keydown', 'p', function(){
+				$('.mode-button[data-mode="price"]').click();
+			});
 	    }
 
 	});
