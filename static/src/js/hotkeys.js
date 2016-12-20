@@ -36,8 +36,37 @@ odoo.define('hotkeys', function (require) {
 				});
 			})
 	    },
+	    eventOrderLine : function( type ){
+	    	var selected = false;
+	    	var obj = false;
+			$('li.orderline').each(function(){
+				if( type == 'down' ){
+					if( selected ){
+						$(this).click();
+						selected = false;
+					}
+
+					if( $(this).hasClass('selected') ){
+						selected = true
+					}
+				} else if( type == 'up' ) {
+					if( $(this).hasClass('selected') ){
+						if( obj  ){
+							obj.click();	
+						}
+						
+					}
+					obj = $(this);
+
+				}
+				
+
+				
+			});
+	    },
 	    addEvents : function(){
 	    	var self = this;
+	    	console.log('entra');
 
 	    	$(document).bind('keydown', 'c', function(){
 				$('.mode-button[data-mode="quantity"]').click();
@@ -51,9 +80,11 @@ odoo.define('hotkeys', function (require) {
 				$('.mode-button[data-mode="price"]').click();
 			});
 
-			$(document).bind('keydown', 'b', function(){
-				$('.numpad-backspace').click();
+			$(document).bind('keydown', 'backspace', function(){
+				$('.numpad-backspace')[0].click();
 			});
+			
+
 
 			$(document).bind('keydown', 'Ctrl+c', function(){
 				$('.set-customer').click();
@@ -62,6 +93,38 @@ odoo.define('hotkeys', function (require) {
 			$(document).bind('keydown', 'Ctrl+return', function(){
 				$('.pay').click();
 			});
+
+			$(document).bind('keydown', 'up', function(){
+				self.eventOrderLine('up');
+			});
+
+			$(document).bind('keydown', 'down', function(){
+				self.eventOrderLine('down');
+			});
+
+			setTimeout(function(){
+
+				var s = [];
+				$('div[class="numpad"] > button.number-char').each(function(){
+					var num = $(this).html();
+					var obj = $(this);
+
+					if( s.indexOf( num ) == -1 ){
+						s.push( num );
+
+						console.log('evento para ', num);
+						$(document).bind('keydown', num, function(){
+							obj.click();
+						});	
+					}
+
+					
+					
+				});	
+
+
+			}, 3000);
+			
 	    }
 
 	});
