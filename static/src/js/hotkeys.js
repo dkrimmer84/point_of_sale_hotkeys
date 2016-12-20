@@ -50,6 +50,18 @@ odoo.define('hotkeys', function (require) {
 			$(document).bind('keydown', 'p', function(){
 				$('.mode-button[data-mode="price"]').click();
 			});
+
+			$(document).bind('keydown', 'b', function(){
+				$('.numpad-backspace').click();
+			});
+
+			$(document).bind('keydown', 'Ctrl+c', function(){
+				$('.set-customer').click();
+			});
+
+			$(document).bind('keydown', 'Ctrl+return', function(){
+				$('.pay').click();
+			});
 	    }
 
 	});
