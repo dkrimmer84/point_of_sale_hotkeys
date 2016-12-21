@@ -64,9 +64,15 @@ odoo.define('hotkeys', function (require) {
 				
 			});
 	    },
+	    eventProduct : function( type ){
+	    	$('div.product-list > .product').each(function(){
+	    		if( type == 'right' ){
+
+	    		}
+	    	});
+	    },
 	    addEvents : function(){
 	    	var self = this;
-	    	console.log('entra');
 
 	    	$(document).bind('keydown', 'c', function(){
 				$('.mode-button[data-mode="quantity"]').click();
@@ -96,12 +102,20 @@ odoo.define('hotkeys', function (require) {
 				$('.pay').click();
 			});
 
-			$(document).bind('keydown', 'up', function(){
+			$(document).bind('keydown', 'Ctrl+up', function(){
 				self.eventOrderLine('up');
 			});
 
-			$(document).bind('keydown', 'down', function(){
+			$(document).bind('keydown', 'Ctrl+down', function(){
 				self.eventOrderLine('down');
+			});
+
+			$(document).bind('keydown', 'right', function(){
+				self.eventProduct('right');
+			});
+
+			$(document).bind('keydown', 'left', function(){
+				self.eventProduct('left');
 			});
 
 			setTimeout(function(){
@@ -114,7 +128,6 @@ odoo.define('hotkeys', function (require) {
 					if( s.indexOf( num ) == -1 ){
 						s.push( num );
 
-						console.log('evento para ', num);
 						$(document).bind('keydown', num, function(){
 							obj.click();
 						});	
