@@ -84,7 +84,9 @@ odoo.define('hotkeys', function (require) {
 				$('.numpad-backspace')[0].click();
 			});
 			
-
+			$(document).bind('keydown', 'Ctrl+b', function(){
+				$('.search-clear').click();
+			});
 
 			$(document).bind('keydown', 'Ctrl+c', function(){
 				$('.set-customer').click();
