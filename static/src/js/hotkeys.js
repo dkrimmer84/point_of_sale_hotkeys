@@ -68,6 +68,9 @@ odoo.define('hotkeys', function (require) {
 	    	$('div.product-list > .product').each(function(){
 	    		if( type == 'right' ){
 
+	    			$(this).css({
+	    				'background' : '#cccccc'
+	    			})
 	    		}
 	    	});
 	    },
@@ -108,6 +111,11 @@ odoo.define('hotkeys', function (require) {
 
 			$(document).bind('keydown', 'Ctrl+down', function(){
 				self.eventOrderLine('down');
+			});
+
+			$(document).bind('keydown', 'tab', function(){
+				$('.breadcrumb-button').click();
+				
 			});
 
 			$(document).bind('keydown', 'right', function(){
