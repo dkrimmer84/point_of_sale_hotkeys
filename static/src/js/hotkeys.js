@@ -65,14 +65,67 @@ odoo.define('hotkeys', function (require) {
 			});
 	    },
 	    eventProduct : function( type ){
-	    	$('div.product-list > .product').each(function(){
+	    	var product_selected = $('.product').hasClass('product_selected');
+	    	if( ! product_selected ){
+				$('div.product-list > .product').each(function(){
+					$(this).addClass('product_selected');
+	    			return false;					
+				});	    		
+	    	} else {
+	    		product_selected = false;
+	    		var product_obj = false;
+
+	    		if( type == 'right' ){
+	    			$('div.product-list > .product').each(function(){
+		    			if( product_selected ){
+		    				product_obj.removeClass('product_selected');
+		    				$(this).addClass('product_selected');
+
+		    				product_obj = false;
+		    				product_selected = false;
+
+		    				return false;
+		    			}
+
+		    			product_selected = $(this).hasClass('product_selected');
+		    			product_obj = $(this);
+		    		});
+	    		} else {
+	    			
+	    			$('div.product-list > .product').each(function(){
+	    				product_selected = $(this).hasClass('product_selected');
+
+	    				if( $('.product:first').hasClass('product_selected') ){
+	    					return false;
+	    				}
+
+	    				if( product_selected  ){
+	    					$(this).removeClass('product_selected');
+	    					product_obj.addClass('product_selected');
+
+	    					product_obj = false;
+		    				product_selected = false;
+
+		    				return false;
+	    				}
+
+	    				product_obj = $(this);
+
+	    				
+	    			});
+	    		}
+
+	    		
+	    	}
+
+
+	    	/*$('div.product-list > .product').each(function(){
 	    		if( type == 'right' ){
 
-	    			$(this).css({
-	    				'background' : '#cccccc'
-	    			})
+	    			$(this).addClass('product_selected');
+	    			return false;
 	    		}
-	    	});
+	    	});*/
 	    },
 	    addEvents : function(){
 	    	var self = this;
@@ -105,6 +158,17 @@ odoo.define('hotkeys', function (require) {
 				$('.pay').click();
 			});
 
+			$(document).bind('keydown', 'return', function(){
+				var product_selected = $('.product').hasClass('product_selected');
+
+				if( product_selected ){
+					$('.product.product_selected').click();
+					$('.product').removeClass('product_selected');
+				}
+
+				
+			});
+
 			$(document).bind('keydown', 'Ctrl+up', function(){
 				self.eventOrderLine('up');
 			});
@@ -118,11 +182,13 @@ odoo.define('hotkeys', function (require) {
 				
 			});
 
-			$(document).bind('keydown', 'right', function(){
+			$(document).bind('keydown', 'Ctrl+right', function(){
+				console.log('right');
 				self.eventProduct('right');
 			});
 
-			$(document).bind('keydown', 'left', function(){
+			$(document).bind('keydown', 'Ctrl+left', function(){
+				console.log('left');
 				self.eventProduct('left');
 			});
 
