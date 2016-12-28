@@ -178,6 +178,7 @@ odoo.define('hotkeys', function (require) {
 			});
 
 			$(document).bind('keydown', 'tab', function(){
+				console.log('tab');
 				$('.breadcrumb-button').click();
 				
 			});
