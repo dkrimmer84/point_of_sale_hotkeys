@@ -131,19 +131,30 @@ odoo.define('hotkeys', function (require) {
 	    	var self = this;
 
 	    	$(document).bind('keydown', 'c', function(){
-				$('.mode-button[data-mode="quantity"]').click();
+	    		if( ! $('.next').is(":visible") ){
+	    			$('.mode-button[data-mode="quantity"]').click();
+	    		}
+				
 			});
 
 			$(document).bind('keydown', 'd', function(){
-				$('.mode-button[data-mode="discount"]').click();
+				if( ! $('.next').is(":visible") ){
+					$('.mode-button[data-mode="discount"]').click();
+				}
 			});
 
 			$(document).bind('keydown', 'p', function(){
-				$('.mode-button[data-mode="price"]').click();
+				if( ! $('.next').is(":visible") ){
+					$('.mode-button[data-mode="price"]').click();
+				}
+				
 			});
 
 			$(document).bind('keydown', 'backspace', function(){
-				$('.numpad-backspace')[0].click();
+				if( ! $('.next').is(":visible") ){
+					$('.numpad-backspace')[0].click();	
+				}
+				
 			});
 			
 			$(document).bind('keydown', 'Ctrl+b', function(){
@@ -151,46 +162,63 @@ odoo.define('hotkeys', function (require) {
 			});
 
 			$(document).bind('keydown', 'Ctrl+c', function(){
-				$('.set-customer').click();
+				if( ! $('.next').is(":visible") ){
+					$('.set-customer').click();
+				}
+				
 			});
 
 			$(document).bind('keydown', 'Ctrl+return', function(){
-				$('.pay').click();
+				if( ! $('.next').is(":visible") ){
+					$('.pay').click();
+				}
 			});
 
 			$(document).bind('keydown', 'return', function(){
-				var product_selected = $('.product').hasClass('product_selected');
+				if( ! $('.next').is(":visible") ){
+					var product_selected = $('.product').hasClass('product_selected');
 
-				if( product_selected ){
-					$('.product.product_selected').click();
-					$('.product').removeClass('product_selected');
+					if( product_selected ){
+						$('.product.product_selected').click();
+						$('.product').removeClass('product_selected');
+					}
 				}
+				
 
 				
 			});
 
 			$(document).bind('keydown', 'Ctrl+up', function(){
-				self.eventOrderLine('up');
+				if( ! $('.next').is(":visible") ){
+					self.eventOrderLine('up');
+				}
+				
 			});
 
 			$(document).bind('keydown', 'Ctrl+down', function(){
-				self.eventOrderLine('down');
+				if( ! $('.next').is(":visible") ){
+					self.eventOrderLine('down');
+				}
+				
 			});
 
 			$(document).bind('keydown', 'tab', function(){
-				console.log('tab');
 				$('.breadcrumb-button').click();
 				
 			});
 
 			$(document).bind('keydown', 'Ctrl+right', function(){
-				console.log('right');
-				self.eventProduct('right');
+				if( ! $('.next').is(":visible") ){
+					self.eventProduct('right');
+				}
+				
 			});
 
 			$(document).bind('keydown', 'Ctrl+left', function(){
-				console.log('left');
-				self.eventProduct('left');
+				if( ! $('.next').is(":visible") ){
+					self.eventProduct('left');
+				}
+				
 			});
 
 			setTimeout(function(){
@@ -204,7 +232,10 @@ odoo.define('hotkeys', function (require) {
 						s.push( num );
 
 						$(document).bind('keydown', num, function(){
-							obj.click();
+							if( ! $('.next').is(":visible") ){
+								obj.click();
+							}
+							
 						});	
 					}
 
