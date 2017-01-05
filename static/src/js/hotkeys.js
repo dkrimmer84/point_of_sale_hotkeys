@@ -160,6 +160,13 @@ odoo.define('hotkeys', function (require) {
 			$(document).bind('keydown', 'Ctrl+b', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.search-clear').click();	
+
+					$('.searchbox > input').bind('keydown', 'tab', function(){
+						console.log('Entraaaaaa');
+						//$(this).blur();
+						//$('.select-order.selected').click();
+						$('.fa-home').click();						
+					});
 				}
 			});
 
@@ -204,10 +211,11 @@ odoo.define('hotkeys', function (require) {
 				
 			});
 
-			$(document).bind('keydown', 'tab', function(){
+			/*$(document).bind('keydown', 'tab', function(){
+				console.log('Entraaa');
 				$('.breadcrumb-button').click();
 				
-			});
+			});*/
 
 			$(document).bind('keydown', 'Ctrl+right', function(){
 				if( ! $('.next').is(":visible") ){
