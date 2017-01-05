@@ -158,7 +158,9 @@ odoo.define('hotkeys', function (require) {
 			});
 			
 			$(document).bind('keydown', 'Ctrl+b', function(){
-				$('.search-clear').click();
+				if( ! $('.next').is(":visible") ){
+					$('.search-clear').click();	
+				}
 			});
 
 			$(document).bind('keydown', 'Ctrl+c', function(){
