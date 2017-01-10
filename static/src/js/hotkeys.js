@@ -65,6 +65,7 @@ odoo.define('hotkeys', function (require) {
 			});
 	    },
 	    eventProduct : function( type ){
+	    	var self = this;
 	    	var product_selected = $('.product').hasClass('product_selected');
 	    	if( ! product_selected ){
 				$('div.product-list > .product').each(function(){
@@ -90,7 +91,7 @@ odoo.define('hotkeys', function (require) {
 		    			product_selected = $(this).hasClass('product_selected');
 		    			product_obj = $(this);
 		    		});
-	    		} else {
+	    		} else if ( type == 'left' ) {
 	    			
 	    			$('div.product-list > .product').each(function(){
 	    				product_selected = $(this).hasClass('product_selected');
@@ -113,6 +114,28 @@ odoo.define('hotkeys', function (require) {
 
 	    				
 	    			});
+	    		} else if ( type == 'down' ) {
+	    			var width = $('.product-list').width();
+	    			var products = Math.round(width / 142);
+	    			if( (width / 142 ) < 3 ){
+	    				products = 2;
+	    			}
+
+	    			for( var n = 1; n <= products; n++ ){
+	    				self.eventProduct('right');
+	    			}
+
+	    		} else if ( type == 'up' ) {
+	    			var width = $('.product-list').width();
+	    			var products = Math.round(width / 142);
+
+	    			if( (width / 142 ) < 3 ){
+	    				products = 2;
+	    			}
+	    			for( var n = 1; n <= products; n++ ){
+	    				self.eventProduct('left');
+	    			}
+
 	    		}
 
 	    		
@@ -216,6 +239,20 @@ odoo.define('hotkeys', function (require) {
 				$('.breadcrumb-button').click();
 				
 			});*/
+
+			$(document).bind('keydown', 'Ctrl+down', function(){
+				if( ! $('.next').is(":visible") ){
+					self.eventProduct('down');
+				}
+				
+			});
+
+			$(document).bind('keydown', 'Ctrl+up', function(){
+				if( ! $('.next').is(":visible") ){
+					self.eventProduct('up');
+				}
+				
+			});
 
 			$(document).bind('keydown', 'Ctrl+right', function(){
 				if( ! $('.next').is(":visible") ){
