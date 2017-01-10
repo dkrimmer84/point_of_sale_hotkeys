@@ -240,28 +240,28 @@ odoo.define('hotkeys', function (require) {
 				
 			});*/
 
-			$(document).bind('keydown', 'Ctrl+down', function(){
+			$(document).bind('keydown', 'Shift+down', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('down');
 				}
 				
 			});
 
-			$(document).bind('keydown', 'Ctrl+up', function(){
+			$(document).bind('keydown', 'Shift+up', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('up');
 				}
 				
 			});
 
-			$(document).bind('keydown', 'Ctrl+right', function(){
+			$(document).bind('keydown', 'Shift+right', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('right');
 				}
 				
 			});
 
-			$(document).bind('keydown', 'Ctrl+left', function(){
+			$(document).bind('keydown', 'Shift+left', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('left');
 				}
