@@ -38,7 +38,7 @@
     ],
     'demo': [],
     'qweb': [
-        
+        "static/src/xml/inherit.xml",
     ],
     'auto_install': False,
     'installable': True,

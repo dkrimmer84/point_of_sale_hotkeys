@@ -153,60 +153,78 @@ odoo.define('hotkeys', function (require) {
 	    addEvents : function(){
 	    	var self = this;
 
-	    	$(document).bind('keydown', 'c', function(){
+	    	Mousetrap.bindGlobal('c', function(){
 	    		if( ! $('.next').is(":visible") ){
 	    			$('.mode-button[data-mode="quantity"]').click();
 	    		}
 				
 			});
 
-			$(document).bind('keydown', 'd', function(){
+			Mousetrap.bindGlobal('d', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.mode-button[data-mode="discount"]').click();
 				}
 			});
 
-			$(document).bind('keydown', 'p', function(){
+			Mousetrap.bindGlobal('p', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.mode-button[data-mode="price"]').click();
 				}
 				
 			});
 
-			$(document).bind('keydown', 'backspace', function(){
+			Mousetrap.bindGlobal('backspace', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.numpad-backspace')[0].click();	
 				}
 				
 			});
-			
-			$(document).bind('keydown', 'Ctrl+b', function(){
-				if( ! $('.next').is(":visible") ){
-					$('.search-clear').click();	
 
-					$('.searchbox > input').bind('keydown', 'tab', function(){
-						console.log('Entraaaaaa');
-						//$(this).blur();
-						//$('.select-order.selected').click();
-						$('.fa-home').click();						
+			
+			Mousetrap.bindGlobal('ctrl+b', function(){
+				if( ! $('.next').is(":visible") ){
+					$('.searchbox > input').focus();
+
+					$('.searchbox > input').bind('keydown', 'tab', function( e ){
+						$('.searchbox > input').blur();
 					});
+
+
 				}
 			});
 
-			$(document).bind('keydown', 'Ctrl+c', function(){
+			Mousetrap.bindGlobal('ctrl+c', function() {
+			    if( ! $('.next').is(":visible") ){
+					$('.set-customer').click();
+				}
+			});
+
+			/*$(document).keyup(function(e) {
+				console.log( 'evento', e.keyCode, e.ctrlKey );
+			     if (e.keyCode == 27) { // escape key maps to keycode `27`
+			        console.log('Entra 2');
+			    }
+
+			    if (e.keyCode == 66) { // escape key maps to keycode `27`
+			        $('.set-customer').click();
+			    }
+
+			});*/
+
+			/*Mousetrap.bindGlobal('ctrl+c', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.set-customer').click();
 				}
 				
-			});
+			});*/
 
-			$(document).bind('keydown', 'Ctrl+return', function(){
+			Mousetrap.bindGlobal('ctrl+return', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.pay').click();
 				}
 			});
 
-			$(document).bind('keydown', 'return', function(){
+			Mousetrap.bindGlobal('return', function(){
 				if( ! $('.next').is(":visible") ){
 					var product_selected = $('.product').hasClass('product_selected');
 
@@ -220,48 +238,48 @@ odoo.define('hotkeys', function (require) {
 				
 			});
 
-			$(document).bind('keydown', 'Ctrl+up', function(){
+			Mousetrap.bindGlobal('ctrl+up', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventOrderLine('up');
 				}
 				
 			});
 
-			$(document).bind('keydown', 'Ctrl+down', function(){
+			Mousetrap.bindGlobal('ctrl+down', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventOrderLine('down');
 				}
 				
 			});
 
-			/*$(document).bind('keydown', 'tab', function(){
+			/*Mousetrap.bindGlobal('tab', function(){
 				console.log('Entraaa');
 				$('.breadcrumb-button').click();
 				
 			});*/
 
-			$(document).bind('keydown', 'Shift+down', function(){
+			Mousetrap.bindGlobal('shift+down', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('down');
 				}
 				
 			});
 
-			$(document).bind('keydown', 'Shift+up', function(){
+			Mousetrap.bindGlobal('shift+up', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('up');
 				}
 				
 			});
 
-			$(document).bind('keydown', 'Shift+right', function(){
+			Mousetrap.bindGlobal('shift+right', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('right');
 				}
 				
 			});
 
-			$(document).bind('keydown', 'Shift+left', function(){
+			Mousetrap.bindGlobal('shift+left', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('left');
 				}
@@ -278,7 +296,7 @@ odoo.define('hotkeys', function (require) {
 					if( s.indexOf( num ) == -1 ){
 						s.push( num );
 
-						$(document).bind('keydown', num, function(){
+						Mousetrap.bindGlobal(num, function(){
 							if( ! $('.next').is(":visible") ){
 								obj.click();
 							}
