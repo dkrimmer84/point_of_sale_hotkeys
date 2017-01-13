@@ -316,6 +316,8 @@ odoo.define('hotkeys', function (require) {
 				if( ! $('.next').is(":visible") ){
 					
 				} else {
+
+					
 					var payment_selected = $('.payment_selected');
 					if( payment_selected.length > 0 ){
 						payment_selected.click();
