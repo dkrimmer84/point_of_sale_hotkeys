@@ -234,7 +234,7 @@ odoo.define('hotkeys', function (require) {
 				} else {
 
 					if( $('.back').is(":visible") ){
-						$('.back').click();
+						//$('.back').click();
 					}
 
 				}
@@ -252,10 +252,10 @@ odoo.define('hotkeys', function (require) {
 			});
 
 			Mousetrap.bindGlobal('esc', function(){
-				if( ! $('.next').is(":visible") ){
-					$('.searchbox > input').blur();
-
+				if( $('.back').is(":visible") ){
+						$('.back').click();
 				}
+
 			});
 
 
@@ -275,19 +275,29 @@ odoo.define('hotkeys', function (require) {
 				}
 			});
 
-			Mousetrap.bind('return', function(){
+			Mousetrap.bindGlobal('return', function(){
 				if( ! $('.next').is(":visible") ){
-					var product_selected = $('.product').hasClass('product_selected');
+					console.log('testtt', $('.searchbox > input').is(":focus"));
 
-					if( product_selected ){
-						$('.product.product_selected').click();
-						$('.product').removeClass('product_selected');
+					if( $('.searchbox > input').is(":focus") ){
+						$('.searchbox > input').blur();
+					} else {
+						var product_selected = $('.product').hasClass('product_selected');
+
+						if( product_selected ){
+							$('.product.product_selected').click();
+							$('.product').removeClass('product_selected');
+						}
 					}
+
+					
 				} else {
 
 					if($('.print').is(":visible")){
 						$('.next').click();
 					}
+
+			
 				}
 
 
@@ -297,22 +307,18 @@ odoo.define('hotkeys', function (require) {
 			Mousetrap.bind('ctrl+up', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventOrderLine('up');
-				} else {
-					self.eventPayment('up');
-				}
+				} 
 
 			});
 
 			Mousetrap.bind('ctrl+down', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventOrderLine('down');
-				} else {
-					self.eventPayment('down');
-				}
+				} 
 
 			});
 
-			Mousetrap.bind('right', function(){
+			/*Mousetrap.bind('right', function(){
 				if( ! $('.next').is(":visible") ){
 
 				} else {
@@ -325,7 +331,7 @@ odoo.define('hotkeys', function (require) {
 					}
 				}
 
-			});
+			});*/
 
 
 
@@ -335,28 +341,40 @@ odoo.define('hotkeys', function (require) {
 
 			});*/
 
-			Mousetrap.bind('shift+down', function(){
+			Mousetrap.bind('down', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('down');
+				}  else {
+					self.eventPayment('down');
 				}
 
 			});
 
-			Mousetrap.bind('shift+up', function(){
+			Mousetrap.bind('up', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('up');
+				} else {
+					self.eventPayment('up');
 				}
 
 			});
 
-			Mousetrap.bind('shift+right', function(){
+			Mousetrap.bind('right', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('right');
+				} else {
+
+
+					var payment_selected = $('.payment_selected');
+					if( payment_selected.length > 0 ){
+						payment_selected.click();
+						$('.paymentmethod').removeClass('payment_selected');
+					}
 				}
 
 			});
 
-			Mousetrap.bind('shift+left', function(){
+			Mousetrap.bind('left', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('left');
 				}
