@@ -153,27 +153,27 @@ odoo.define('hotkeys', function (require) {
 	    addEvents : function(){
 	    	var self = this;
 
-	    	Mousetrap.bindGlobal('c', function(){
+	    	Mousetrap.bind('c', function(){
 	    		if( ! $('.next').is(":visible") ){
 	    			$('.mode-button[data-mode="quantity"]').click();
 	    		}
 				
 			});
 
-			Mousetrap.bindGlobal('d', function(){
+			Mousetrap.bind('d', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.mode-button[data-mode="discount"]').click();
 				}
 			});
 
-			Mousetrap.bindGlobal('p', function(){
+			Mousetrap.bind('p', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.mode-button[data-mode="price"]').click();
 				}
 				
 			});
 
-			Mousetrap.bindGlobal('backspace', function(){
+			Mousetrap.bind('backspace', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.numpad-backspace')[0].click();	
 				}
@@ -181,22 +181,21 @@ odoo.define('hotkeys', function (require) {
 			});
 
 			
-			Mousetrap.bindGlobal('ctrl+b', function(){
+			Mousetrap.bind('ctrl+b', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.searchbox > input').focus();
-
-					$('.searchbox > input').bind('keydown', 'tab', function( e ){
-						$('.searchbox > input').blur();
-					});
-
-
 				}
 			});
 
+			Mousetrap.bindGlobal('esc', function(){
+				if( ! $('.next').is(":visible") ){
+					$('.searchbox > input').blur();
+				}
+			});
 
 			
 
-			Mousetrap.bindGlobal('ctrl+c', function() {
+			Mousetrap.bind('ctrl+c', function() {
 			    if( ! $('.next').is(":visible") ){
 					$('.set-customer').click();
 				}
@@ -214,20 +213,22 @@ odoo.define('hotkeys', function (require) {
 
 			});*/
 
-			/*Mousetrap.bindGlobal('ctrl+c', function(){
+			/*Mousetrap.bind('ctrl+c', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.set-customer').click();
 				}
 				
 			});*/
 
-			Mousetrap.bindGlobal('ctrl+return', function(){
+			Mousetrap.bind('ctrl+return', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.pay').click();
+				} else {
+					$('.next').click();
 				}
 			});
 
-			Mousetrap.bindGlobal('return', function(){
+			Mousetrap.bind('return', function(){
 				if( ! $('.next').is(":visible") ){
 					var product_selected = $('.product').hasClass('product_selected');
 
@@ -241,48 +242,48 @@ odoo.define('hotkeys', function (require) {
 				
 			});
 
-			Mousetrap.bindGlobal('ctrl+up', function(){
+			Mousetrap.bind('ctrl+up', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventOrderLine('up');
 				}
 				
 			});
 
-			Mousetrap.bindGlobal('ctrl+down', function(){
+			Mousetrap.bind('ctrl+down', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventOrderLine('down');
 				}
 				
 			});
 
-			/*Mousetrap.bindGlobal('tab', function(){
+			/*Mousetrap.bind('tab', function(){
 				console.log('Entraaa');
 				$('.breadcrumb-button').click();
 				
 			});*/
 
-			Mousetrap.bindGlobal('shift+down', function(){
+			Mousetrap.bind('shift+down', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('down');
 				}
 				
 			});
 
-			Mousetrap.bindGlobal('shift+up', function(){
+			Mousetrap.bind('shift+up', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('up');
 				}
 				
 			});
 
-			Mousetrap.bindGlobal('shift+right', function(){
+			Mousetrap.bind('shift+right', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('right');
 				}
 				
 			});
 
-			Mousetrap.bindGlobal('shift+left', function(){
+			Mousetrap.bind('shift+left', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('left');
 				}
@@ -299,7 +300,7 @@ odoo.define('hotkeys', function (require) {
 					if( s.indexOf( num ) == -1 ){
 						s.push( num );
 
-						Mousetrap.bindGlobal(num, function(){
+						Mousetrap.bind(num, function(){
 							if( ! $('.next').is(":visible") ){
 								obj.click();
 							}
