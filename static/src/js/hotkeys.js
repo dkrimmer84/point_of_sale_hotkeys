@@ -174,6 +174,8 @@ odoo.define('hotkeys', function (require) {
 	    				products = 2;
 	    			}
 
+	    			console.log('testt', products);
+
 	    			for( var n = 1; n <= products; n++ ){
 	    				self.eventProduct('right');
 	    			}
