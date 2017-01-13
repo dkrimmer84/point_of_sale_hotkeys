@@ -237,12 +237,16 @@ odoo.define('hotkeys', function (require) {
 			Mousetrap.bind('ctrl+b', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.searchbox > input').focus();
+
+
 				}
 			});
 
 			Mousetrap.bindGlobal('esc', function(){
 				if( ! $('.next').is(":visible") ){
+					$('.search-clear').click();
 					$('.searchbox > input').blur();
+
 				}
 			});
 
