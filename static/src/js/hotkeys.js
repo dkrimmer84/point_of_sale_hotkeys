@@ -258,8 +258,6 @@ odoo.define('hotkeys', function (require) {
 				}
 			});
 
-			
-
 			Mousetrap.bind('ctrl+c', function() {
 			    if( ! $('.next').is(":visible") ){
 					$('.set-customer').click();
