@@ -251,14 +251,14 @@ odoo.define('hotkeys', function (require) {
 				}
 			});
 
-			Mousetrap.bindGlobal('enter', function(){
+			Mousetrap.bindGlobal('esc', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.searchbox > input').blur();
 
 				}
 			});
 
-			
+
 
 			Mousetrap.bind('ctrl+c', function() {
 			    if( ! $('.next').is(":visible") ){
@@ -289,9 +289,9 @@ odoo.define('hotkeys', function (require) {
 						$('.next').click();
 					}
 				}
-				
 
-				
+
+
 			});
 
 			Mousetrap.bind('ctrl+up', function(){
@@ -300,7 +300,7 @@ odoo.define('hotkeys', function (require) {
 				} else {
 					self.eventPayment('up');
 				}
-				
+
 			});
 
 			Mousetrap.bind('ctrl+down', function(){
@@ -309,12 +309,12 @@ odoo.define('hotkeys', function (require) {
 				} else {
 					self.eventPayment('down');
 				}
-				
+
 			});
 
 			Mousetrap.bind('right', function(){
 				if( ! $('.next').is(":visible") ){
-					
+
 				} else {
 
 					
@@ -324,7 +324,7 @@ odoo.define('hotkeys', function (require) {
 						$('.paymentmethod').removeClass('payment_selected');
 					}
 				}
-				
+
 			});
 
 
@@ -332,35 +332,35 @@ odoo.define('hotkeys', function (require) {
 			/*Mousetrap.bind('tab', function(){
 				console.log('Entraaa');
 				$('.breadcrumb-button').click();
-				
+
 			});*/
 
-			Mousetrap.bind('down', function(){
+			Mousetrap.bind('shift+down', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('down');
 				}
-				
+
 			});
 
-			Mousetrap.bind('up', function(){
+			Mousetrap.bind('shift+up', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('up');
 				}
-				
+
 			});
 
-			Mousetrap.bind('right', function(){
+			Mousetrap.bind('shift+right', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('right');
 				}
-				
+
 			});
 
-			Mousetrap.bind('left', function(){
+			Mousetrap.bind('shift+left', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('left');
 				}
-				
+
 			});
 
 			setTimeout(function(){
@@ -377,25 +377,25 @@ odoo.define('hotkeys', function (require) {
 							if( ! $('.next').is(":visible") ){
 								obj.click();
 							}
-							
-						});	
+
+						});
 					}
 
-					
-					
-				});	
+
+
+				});
 
 
 			}, 3000);
 
 
 
-			
+
 	    }
 
 	});
 
 
 
-   
+
  });
