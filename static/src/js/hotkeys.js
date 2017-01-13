@@ -229,6 +229,12 @@ odoo.define('hotkeys', function (require) {
 			Mousetrap.bind('backspace', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.numpad-backspace')[0].click();	
+				} else {
+
+					if( $('.back').is(":visible") ){
+						$('.back').click();
+					}
+
 				}
 				
 			});
@@ -236,6 +242,7 @@ odoo.define('hotkeys', function (require) {
 			
 			Mousetrap.bind('ctrl+b', function(){
 				if( ! $('.next').is(":visible") ){
+					$('.search-clear').click();
 					$('.searchbox > input').focus();
 
 
@@ -244,7 +251,6 @@ odoo.define('hotkeys', function (require) {
 
 			Mousetrap.bindGlobal('esc', function(){
 				if( ! $('.next').is(":visible") ){
-					$('.search-clear').click();
 					$('.searchbox > input').blur();
 
 				}
