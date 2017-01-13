@@ -249,7 +249,7 @@ odoo.define('hotkeys', function (require) {
 				}
 			});
 
-			Mousetrap.bindGlobal('enter', function(){
+			Mousetrap.bindGlobal('esc', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.searchbox > input').blur();
 
