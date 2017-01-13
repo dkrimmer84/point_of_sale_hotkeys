@@ -36,6 +36,59 @@ odoo.define('hotkeys', function (require) {
 				});
 			})
 	    },
+	    eventPayment : function( type ){
+			var self = this;
+	    	var payment_selected = $('.paymentmethod').hasClass('payment_selected');
+	    	if( ! payment_selected ){
+				$('.paymentmethod').each(function(){
+					$(this).addClass('payment_selected');
+	    			return false;					
+				});	    		
+	    	} else {
+	    		payment_selected = false;
+	    		var payment_obj = false;
+
+	    		if( type == 'down' ){
+	    			$('.paymentmethods > .paymentmethod').each(function(){
+		    			if( payment_selected ){
+		    				payment_obj.removeClass('payment_selected');
+		    				$(this).addClass('payment_selected');
+
+		    				payment_obj = false;
+		    				payment_selected = false;
+
+		    				return false;
+		    			}
+
+		    			payment_selected = $(this).hasClass('payment_selected');
+		    			payment_obj = $(this);
+		    		});
+	    		} else if ( type == 'up' ) {
+	    			
+	    			$('.paymentmethods > .paymentmethod').each(function(){
+	    				payment_selected = $(this).hasClass('payment_selected');
+
+	    				if( $('.product:first').hasClass('payment_selected') ){
+	    					return false;
+	    				}
+
+	    				if( payment_selected  ){
+	    					$(this).removeClass('payment_selected');
+	    					payment_obj.addClass('payment_selected');
+
+	    					payment_obj = false;
+		    				payment_selected = false;
+
+		    				return false;
+	    				}
+
+	    				payment_obj = $(this);
+
+	    				
+	    			});
+	    		}
+	    	}
+	    },
 	    eventOrderLine : function( type ){
 	    	var selected = false;
 	    	var obj = false;
@@ -201,30 +254,12 @@ odoo.define('hotkeys', function (require) {
 				}
 			});
 
-			/*$(document).keyup(function(e) {
-				console.log( 'evento', e.keyCode, e.ctrlKey );
-			     if (e.keyCode == 27) { // escape key maps to keycode `27`
-			        console.log('Entra 2');
-			    }
-
-			    if (e.keyCode == 66) { // escape key maps to keycode `27`
-			        $('.set-customer').click();
-			    }
-
-			});*/
-
-			/*Mousetrap.bind('ctrl+c', function(){
-				if( ! $('.next').is(":visible") ){
-					$('.set-customer').click();
-				}
-				
-			});*/
 
 			Mousetrap.bind('ctrl+return', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.pay').click();
 				} else {
-					$('.next').click();
+					//$('.next').click();
 				}
 			});
 
@@ -236,6 +271,11 @@ odoo.define('hotkeys', function (require) {
 						$('.product.product_selected').click();
 						$('.product').removeClass('product_selected');
 					}
+				} else {
+
+					if($('.print').is(":visible")){
+						$('.next').click();
+					}
 				}
 				
 
@@ -245,6 +285,8 @@ odoo.define('hotkeys', function (require) {
 			Mousetrap.bind('ctrl+up', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventOrderLine('up');
+				} else {
+					self.eventPayment('up');
 				}
 				
 			});
@@ -252,9 +294,26 @@ odoo.define('hotkeys', function (require) {
 			Mousetrap.bind('ctrl+down', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventOrderLine('down');
+				} else {
+					self.eventPayment('down');
 				}
 				
 			});
+
+			Mousetrap.bind('right', function(){
+				if( ! $('.next').is(":visible") ){
+					
+				} else {
+					var payment_selected = $('.payment_selected');
+					if( payment_selected.length > 0 ){
+						payment_selected.click();
+						$('.paymentmethod').removeClass('payment_selected');
+					}
+				}
+				
+			});
+
+
 
 			/*Mousetrap.bind('tab', function(){
 				console.log('Entraaa');
@@ -314,6 +373,9 @@ odoo.define('hotkeys', function (require) {
 
 
 			}, 3000);
+
+
+
 			
 	    }
 

@@ -1,4 +1,4 @@
-.product_selected{
+.product_selected, .payment_selected{
 	border: 1px solid #000000 !important;
 }
 
