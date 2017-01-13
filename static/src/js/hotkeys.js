@@ -249,7 +249,7 @@ odoo.define('hotkeys', function (require) {
 				}
 			});
 
-			Mousetrap.bindGlobal('esc', function(){
+			Mousetrap.bindGlobal('enter', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.searchbox > input').blur();
 
@@ -331,28 +331,28 @@ odoo.define('hotkeys', function (require) {
 				
 			});*/
 
-			Mousetrap.bind('shift+down', function(){
+			Mousetrap.bind('down', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('down');
 				}
 				
 			});
 
-			Mousetrap.bind('shift+up', function(){
+			Mousetrap.bind('up', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('up');
 				}
 				
 			});
 
-			Mousetrap.bind('shift+right', function(){
+			Mousetrap.bind('right', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('right');
 				}
 				
 			});
 
-			Mousetrap.bind('shift+left', function(){
+			Mousetrap.bind('left', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('left');
 				}
