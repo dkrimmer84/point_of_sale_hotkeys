@@ -209,7 +209,12 @@ odoo.define('hotkeys', function (require) {
 	    	var self = this;
 
 	    	Mousetrap.bind('c', function(){
-	    		if( ! $('.next').is(":visible") ){
+	    		if($('.popup-password').is(":visible")){
+	    			var clear = $('div[class="popup-numpad"] > button.numpad-char[data-action="CLEAR"]')[1];
+					clear.click();
+
+
+	    		} else if( ! $('.next').is(":visible") ){
 	    			$('.mode-button[data-mode="quantity"]').click();
 	    		}
 				
@@ -229,6 +234,13 @@ odoo.define('hotkeys', function (require) {
 			});
 
 			Mousetrap.bind('backspace', function(){
+				if($('.popup-password').is(":visible")){
+	    			var backspace = $('div[class="popup-numpad"] > button.numpad-backspace[data-action="BACKSPACE"]')[1];
+					backspace.click();
+					return;
+
+	    		}
+
 				if( ! $('.next').is(":visible") ){
 					$('.numpad-backspace')[0].click();	
 				} else {
@@ -252,8 +264,17 @@ odoo.define('hotkeys', function (require) {
 			});
 
 			Mousetrap.bindGlobal('esc', function(){
+				if($('.popup-password').is(":visible")){
+	    			var cancel = $('div.popup-password > div.centered > .cancel');
+					cancel.click();
+					return;
+
+	    		}
+
 				if( $('.back').is(":visible") ){
-						$('.back').click();
+					$('.back').click();
+
+					return;
 				}
 
 			});
@@ -276,7 +297,13 @@ odoo.define('hotkeys', function (require) {
 			});
 
 			Mousetrap.bindGlobal('return', function( e ){
-				console.log('Entra 01');
+				if($('.popup-password').is(":visible")){
+	    			var confirm = $('div.popup-password > div.centered > .confirm');
+					confirm.click();
+					return;
+
+	    		}
+
 
 				if( ! $('.next').is(":visible") ){
 					console.log('testtt', $('.searchbox > input').is(":focus"));
@@ -405,16 +432,51 @@ odoo.define('hotkeys', function (require) {
 						s.push( num );
 
 						Mousetrap.bind(num, function(){
-							if( ! $('.next').is(":visible") ){
+							if($('.popup-password').is(":visible")){
+								
+								var num_pass = $('div[class="popup-numpad"] > button.number-char[data-action="'+ num +'"]')[1];
+								num_pass.click();
+
+							} else if( ! $('.next').is(":visible") ){
 								obj.click();
 							}
 
 						});
+						
+						
+
+						
 					}
 
 
 
 				});
+
+				/*var s = [];
+				$('div[class="popup-numpad"] > button.number-char').each(function(){
+					var num = $(this).html();
+					var obj = $(this);
+
+
+					
+
+					if( s.indexOf( num ) == -1 ){
+						s.push( num );
+
+						console.log('num', num);
+
+						if( $('.popup-password').is(":visible") ){
+
+							Mousetrap.bind(num, function(){
+								obj.click();							
+
+							});
+						}
+					}
+
+
+
+				});*/
 
 
 			}, 3000);
