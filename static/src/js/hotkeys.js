@@ -385,6 +385,8 @@ odoo.define('hotkeys', function (require) {
 
 			});*/
 
+
+
 			Mousetrap.bind('down', function(){
 				if( ! $('.next').is(":visible") ){
 					self.eventProduct('down');
@@ -420,6 +422,16 @@ odoo.define('hotkeys', function (require) {
 				}
 
 			});
+
+			var intervalPaymentMethos = setInterval(function(){
+				var payment_selected = $('.payment_selected');
+				if( payment_selected.length == 0 ){
+					if( $('.next').is(":visible") ){
+						self.eventPayment('down');
+						clearInterval( intervalPaymentMethos );
+					}  
+				}
+			}, 200);
 
 			setTimeout(function(){
 
