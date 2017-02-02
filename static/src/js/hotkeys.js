@@ -425,7 +425,9 @@ odoo.define('hotkeys', function (require) {
 
 			var intervalPaymentMethos = setInterval(function(){
 				var payment_selected = $('.payment_selected');
-				if( payment_selected.length == 0 ){
+				var payment_lines = $('.paymentlines').is(':visible');
+
+				if( payment_selected.length == 0 && ! payment_lines  ){
 					if( $('.next').is(":visible") ){
 						self.eventPayment('down');
 						//clearInterval( intervalPaymentMethos );
