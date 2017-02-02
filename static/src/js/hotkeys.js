@@ -288,10 +288,9 @@ odoo.define('hotkeys', function (require) {
 			});
 
 
-			Mousetrap.bind('ctrl+return', function(e){
+			Mousetrap.bind('ctrl+return', function(){
 				if( ! $('.next').is(":visible") ){
 					$('.pay').click();
-					e.preventDefault();
 				} else {
 					//$('.next').click();
 				}
@@ -301,7 +300,6 @@ odoo.define('hotkeys', function (require) {
 				if($('.popup-password').is(":visible")){
 	    			var confirm = $('div.popup-password > div.centered > .confirm');
 					confirm.click();
-					e.preventDefault();
 					return;
 
 	    		}
@@ -312,7 +310,6 @@ odoo.define('hotkeys', function (require) {
 
 					if( $('.searchbox > input').is(":focus") ){
 						$('.searchbox > input').blur();
-						e.preventDefault();
 					} else {
 						
 
@@ -321,7 +318,6 @@ odoo.define('hotkeys', function (require) {
 						if( product_selected ){
 							$('.product.product_selected').click();
 							$('.product').removeClass('product_selected');
-							e.preventDefault();
 
 							return;
 						}
