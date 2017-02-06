@@ -208,6 +208,13 @@ odoo.define('hotkeys', function (require) {
 	    addEvents : function(){
 	    	var self = this;
 
+	    	Mousetrap.bind('-', function(){
+	    		if( ! $('.next').is(":visible") ){
+	    			$('.numpad-minus').click();
+	    		}
+				
+			});
+
 	    	Mousetrap.bind('c', function(){
 	    		if($('.popup-password').is(":visible")){
 	    			var clear = $('div[class="popup-numpad"] > button.numpad-char[data-action="CLEAR"]')[1];
