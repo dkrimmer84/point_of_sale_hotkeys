@@ -72,7 +72,8 @@ odoo.define('hotkeys', function (require) {
 	    					return false;
 	    				}
 
-	    				if( payment_selected  ){
+
+	    				if( payment_selected && payment_obj  ){
 	    					$(this).removeClass('payment_selected');
 	    					payment_obj.addClass('payment_selected');
 
