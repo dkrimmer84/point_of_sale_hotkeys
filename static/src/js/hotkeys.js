@@ -431,6 +431,9 @@ odoo.define('hotkeys', function (require) {
 
 			});
 
+
+
+
 			var intervalPaymentMethos = setInterval(function(){
 				var payment_selected = $('.payment_selected');
 				var payment_lines = $('.paymentlines').is(':visible');
@@ -441,7 +444,16 @@ odoo.define('hotkeys', function (require) {
 						//clearInterval( intervalPaymentMethos );
 					}  
 				}
+
+				$('.paymentmethod').unbind('dblclick');
+				$('.paymentmethod').dblclick(function(e){
+					$('.delete-button:last').click();
+					$('.paymentline:last').click();
+				});
 			}, 200);
+
+
+
 
 			setTimeout(function(){
 
@@ -473,6 +485,10 @@ odoo.define('hotkeys', function (require) {
 
 
 				});
+
+
+
+
 
 				/*var s = [];
 				$('div[class="popup-numpad"] > button.number-char').each(function(){
