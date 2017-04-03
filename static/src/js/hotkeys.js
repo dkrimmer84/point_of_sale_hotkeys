@@ -450,6 +450,15 @@ odoo.define('hotkeys', function (require) {
 					$('.delete-button:last').click();
 					$('.paymentline:last').click();
 				});
+
+				$('.paymentmethod').unbind('click');
+				$('.paymentmethod').click(function(){
+					$('.paymentmethod').removeClass('payment_selected')
+				});
+
+
+
+
 			}, 200);
 
 
