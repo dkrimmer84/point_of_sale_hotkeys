@@ -205,6 +205,61 @@ odoo.define('hotkeys', function (require) {
 	    		}
 	    	});*/
 	    },
+	    eventReturn : function(){
+	    	Mousetrap.bindGlobal('return', function( e ){
+				if($('.popup-password').is(":visible")){
+	    			var confirm = $('div.popup-password > div.centered > .confirm');
+					confirm.click();
+					return;
+
+	    		}
+
+
+				if( ! $('.next').is(":visible") ){
+					console.log('testtt', $('.searchbox > input').is(":focus"));
+
+					if( $('.searchbox > input').is(":focus") ){
+						$('.searchbox > input').blur();
+					} else {
+						
+
+						var product_selected = $('.product').hasClass('product_selected');
+
+						if( product_selected ){
+							$('.product.product_selected').click();
+							$('.product').removeClass('product_selected');
+
+							return;
+						}
+
+
+
+					}
+
+					
+				} else {
+
+					if($('.print').is(":visible")){
+						$('.next').click();
+						return;
+					}
+
+					var payment_selected = $('.payment_selected');
+					if( payment_selected.length > 0 ){
+						payment_selected.click();
+						$('.paymentmethod').removeClass('payment_selected');
+						e.preventDefault();
+						return;
+					}
+			
+				}
+
+
+
+			});
+	    },
+
+
 	    addEvents : function(){
 	    	var self = this;
 
@@ -303,57 +358,7 @@ odoo.define('hotkeys', function (require) {
 				}
 			});
 
-			Mousetrap.bindGlobal('return', function( e ){
-				if($('.popup-password').is(":visible")){
-	    			var confirm = $('div.popup-password > div.centered > .confirm');
-					confirm.click();
-					return;
-
-	    		}
-
-
-				if( ! $('.next').is(":visible") ){
-					console.log('testtt', $('.searchbox > input').is(":focus"));
-
-					if( $('.searchbox > input').is(":focus") ){
-						$('.searchbox > input').blur();
-					} else {
-						
-
-						var product_selected = $('.product').hasClass('product_selected');
-
-						if( product_selected ){
-							$('.product.product_selected').click();
-							$('.product').removeClass('product_selected');
-
-							return;
-						}
-
-
-
-					}
-
-					
-				} else {
-
-					if($('.print').is(":visible")){
-						$('.next').click();
-						return;
-					}
-
-					var payment_selected = $('.payment_selected');
-					if( payment_selected.length > 0 ){
-						payment_selected.click();
-						$('.paymentmethod').removeClass('payment_selected');
-						e.preventDefault();
-						return;
-					}
-			
-				}
-
-
-
-			});
+			self.eventReturn();
 
 			Mousetrap.bind('ctrl+up', function(){
 				if( ! $('.next').is(":visible") ){
