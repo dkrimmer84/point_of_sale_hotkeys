@@ -9,7 +9,8 @@ odoo.define('hotkeys', function (require) {
 	var Gui = require('point_of_sale.gui');
 	var chrome = require('point_of_sale.chrome');
 	var ajax = require('web.ajax');
-	var Model = require('web.Model');
+	//var Model = require('web.Model');
+	var rpc = require('web.rpc');
 	var data = require('web.data');
 	var PosBaseWidget = require('point_of_sale.BaseWidget');
 	var Screens = require('point_of_sale.screens');
