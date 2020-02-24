@@ -174,6 +174,7 @@ odoo.define('hotkeys', function (require) {
 		},
 		eventReturn : function(){
 			var self = this;
+
 	    	keyboardJS.bind('enter', function(e){
 				if($('.popup-password').is(":visible")){
 	    			var confirm = $('div.popup-password > div.centered > .confirm');
@@ -220,9 +221,49 @@ odoo.define('hotkeys', function (require) {
 	    addEvents : function(){
 			var self = this;
 			
-			keyboardJS.bind('a', function(e) {
-				console.log('a is pressed');
-            });	  
+			keyboardJS.bind('num1', function(e) {
+				$(".number-char" )[0].click()
+			});	  
+			
+			keyboardJS.bind('num2', function(e) {
+				$(".number-char" )[1].click()
+			});	 
+			
+			keyboardJS.bind('num3', function(e) {				
+				$(".number-char" )[2].click()
+			});	 
+			
+			keyboardJS.bind('num4', function(e) {				
+				$(".number-char" )[3].click()
+			});	 
+			
+			keyboardJS.bind('num5', function(e) {				
+				$(".number-char" )[4].click()
+			});	 
+			
+			keyboardJS.bind('num6', function(e) {				
+				$(".number-char" )[5].click()
+			});	 
+			
+			keyboardJS.bind('num7', function(e) {				
+				$(".number-char" )[6].click()
+			});	 
+			
+			keyboardJS.bind('num8', function(e) {				
+				$(".number-char" )[7].click()
+			});	 
+			
+			keyboardJS.bind('num9', function(e) {				
+				$(".number-char" )[8].click()
+			});	 
+			
+			keyboardJS.bind('num0', function(e) {				
+				$(".number-char" )[9].click()
+			});	 
+			
+			keyboardJS.bind('numenter', function(e) {				
+				$(".number-char" )[10].click()
+            });	 
 
 	    	keyboardJS.bind('-', function(e){
 	    		if( ! $('.next').is(":visible") ){
