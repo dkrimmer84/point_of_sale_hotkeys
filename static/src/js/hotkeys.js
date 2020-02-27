@@ -222,52 +222,76 @@ odoo.define('hotkeys', function (require) {
 			var self = this;
 			
 			keyboardJS.bind('num1', function(e) {
-				$(".number-char" )[0].click()
+				$(".number-char" )[0].click();
+				keyboardJS.pause();
+				keyboardJS.resume();
 			});	  
 			
 			keyboardJS.bind('num2', function(e) {
-				$(".number-char" )[1].click()
+				$(".number-char" )[1].click();
+                keyboardJS.pause();
+				keyboardJS.resume();
 			});	 
 			
 			keyboardJS.bind('num3', function(e) {				
-				$(".number-char" )[2].click()
+				$(".number-char" )[2].click();
+                keyboardJS.pause();
+				keyboardJS.resume();
 			});	 
 			
 			keyboardJS.bind('num4', function(e) {				
-				$(".number-char" )[3].click()
+				$(".number-char" )[3].click();
+                keyboardJS.pause();
+				keyboardJS.resume();
 			});	 
 			
 			keyboardJS.bind('num5', function(e) {				
-				$(".number-char" )[4].click()
+				$(".number-char" )[4].click();
+                keyboardJS.pause();
+				keyboardJS.resume();
 			});	 
 			
 			keyboardJS.bind('num6', function(e) {				
-				$(".number-char" )[5].click()
+				$(".number-char" )[5].click();
+                keyboardJS.pause();
+				keyboardJS.resume();
 			});	 
 			
 			keyboardJS.bind('num7', function(e) {				
-				$(".number-char" )[6].click()
+				$(".number-char" )[6].click();
+                keyboardJS.pause();
+				keyboardJS.resume();
 			});	 
 			
 			keyboardJS.bind('num8', function(e) {				
-				$(".number-char" )[7].click()
+				$(".number-char" )[7].click();
+                keyboardJS.pause();
+				keyboardJS.resume();
 			});	 
 			
 			keyboardJS.bind('num9', function(e) {				
-				$(".number-char" )[8].click()
+				$(".number-char" )[8].click();
+                keyboardJS.pause();
+				keyboardJS.resume();
 			});	 
 			
 			keyboardJS.bind('num0', function(e) {				
-				$(".number-char" )[9].click()
+				$(".number-char" )[9].click();
+                keyboardJS.pause();
+				keyboardJS.resume();
 			});	 
 			
 			keyboardJS.bind('numenter', function(e) {				
-				$(".number-char" )[10].click()
+				$(".number-char" )[10].click();
+                keyboardJS.pause();
+				keyboardJS.resume();
             });	 
 
 	    	keyboardJS.bind('-', function(e){
 	    		if( ! $('.next').is(":visible") ){
 	    			$('.numpad-minus').click();
+					keyboardJS.pause();
+					keyboardJS.resume();
 	    		}				
 			});
 
