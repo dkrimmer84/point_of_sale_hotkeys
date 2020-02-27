@@ -33,8 +33,6 @@
     'website': '',
     'data': [
         'views/scripts.xml',
-        
-                
     ],
     'demo': [],
     'qweb': [
