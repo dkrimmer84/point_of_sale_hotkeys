@@ -220,71 +220,110 @@ odoo.define('hotkeys', function (require) {
 
 	    addEvents : function(){
 			var self = this;
+
+			keyboardJS.bind('enter', function(e) {
+
+				if($('.print').is(":visible")){
+						$('.next').click();
+						return;
+				}
+				
+				var confpayment = $('.payment_selected');
+				if(confpayment.length > 0){
+                    
+					confpayment.click();
+					$('.paymentmethod').removeClass('payment_selected');
+					e.preventDefault();
+					return;
+				} 				
+			});
 			
 			keyboardJS.bind('num1', function(e) {
-				$(".number-char" )[0].click();
-				keyboardJS.pause();
-				keyboardJS.resume();
+				if( ! $('.next').is(":visible") ){
+					$(".number-char" )[0].click();
+					keyboardJS.pause();
+					keyboardJS.resume();
+				}
 			});	  
 			
 			keyboardJS.bind('num2', function(e) {
-				$(".number-char" )[1].click();
-                keyboardJS.pause();
-				keyboardJS.resume();
+				if( ! $('.next').is(":visible") ){
+					$(".number-char" )[1].click();
+					keyboardJS.pause();
+					keyboardJS.resume();
+				}
 			});	 
 			
-			keyboardJS.bind('num3', function(e) {				
-				$(".number-char" )[2].click();
-                keyboardJS.pause();
-				keyboardJS.resume();
+			keyboardJS.bind('num3', function(e) {	
+				if( ! $('.next').is(":visible") ){			
+					$(".number-char" )[2].click();
+					keyboardJS.pause();
+					keyboardJS.resume();
+				}
 			});	 
 			
-			keyboardJS.bind('num4', function(e) {				
-				$(".number-char" )[3].click();
-                keyboardJS.pause();
-				keyboardJS.resume();
+			keyboardJS.bind('num4', function(e) {	
+				if( ! $('.next').is(":visible") ){			
+					$(".number-char" )[3].click();
+					keyboardJS.pause();
+					keyboardJS.resume();
+				}
 			});	 
 			
-			keyboardJS.bind('num5', function(e) {				
-				$(".number-char" )[4].click();
-                keyboardJS.pause();
-				keyboardJS.resume();
+			keyboardJS.bind('num5', function(e) {	
+				if( ! $('.next').is(":visible") ){			
+					$(".number-char" )[4].click();
+					keyboardJS.pause();
+					keyboardJS.resume();
+				}
 			});	 
 			
-			keyboardJS.bind('num6', function(e) {				
-				$(".number-char" )[5].click();
-                keyboardJS.pause();
-				keyboardJS.resume();
+			keyboardJS.bind('num6', function(e) {		
+				if( ! $('.next').is(":visible") ){		
+					$(".number-char" )[5].click();
+					keyboardJS.pause();
+					keyboardJS.resume();
+				}
 			});	 
 			
-			keyboardJS.bind('num7', function(e) {				
-				$(".number-char" )[6].click();
-                keyboardJS.pause();
-				keyboardJS.resume();
+			keyboardJS.bind('num7', function(e) {		
+				if( ! $('.next').is(":visible") ){		
+					$(".number-char" )[6].click();
+					keyboardJS.pause();
+					keyboardJS.resume();
+				}
 			});	 
 			
-			keyboardJS.bind('num8', function(e) {				
-				$(".number-char" )[7].click();
-                keyboardJS.pause();
-				keyboardJS.resume();
+			keyboardJS.bind('num8', function(e) {	
+				if( ! $('.next').is(":visible") ){			
+					$(".number-char" )[7].click();
+					keyboardJS.pause();
+					keyboardJS.resume();
+				}
 			});	 
 			
-			keyboardJS.bind('num9', function(e) {				
-				$(".number-char" )[8].click();
-                keyboardJS.pause();
-				keyboardJS.resume();
+			keyboardJS.bind('num9', function(e) {	
+				if( ! $('.next').is(":visible") ){			
+					$(".number-char" )[8].click();
+					keyboardJS.pause();
+					keyboardJS.resume();
+				}
 			});	 
 			
-			keyboardJS.bind('num0', function(e) {				
-				$(".number-char" )[9].click();
-                keyboardJS.pause();
-				keyboardJS.resume();
+			keyboardJS.bind('num0', function(e) {		
+				if( ! $('.next').is(":visible") ){		
+					$(".number-char" )[9].click();
+					keyboardJS.pause();
+					keyboardJS.resume();
+				}
 			});	 
 			
-			keyboardJS.bind('numenter', function(e) {				
-				$(".number-char" )[10].click();
-                keyboardJS.pause();
-				keyboardJS.resume();
+			keyboardJS.bind('numenter', function(e) {	
+				if( ! $('.next').is(":visible") ){			
+					$(".number-char" )[10].click();
+					keyboardJS.pause();
+					keyboardJS.resume();
+				}
             });	 
 
 	    	keyboardJS.bind('-', function(e){
@@ -359,6 +398,7 @@ odoo.define('hotkeys', function (require) {
 			keyboardJS.bind('ctrl+c', function() {
 			    if( ! $('.next').is(":visible") ){
 					$('.set-customer').click();
+					$('.searchbox > input').focus();
 				}
 			});
 
